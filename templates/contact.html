@@ -3,26 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Contact - Ian Aouchiche</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h2>Contactez Ian Aouchiche</h2>
+
+<div class="d-flex justify-content-center align-items-center vh-100 background-gradient">
+    <div class="card p-4 shadow-lg form-card">
+        <h2 class="text-center mb-4 text-gradient">Contactez Ian Aouchiche</h2>
+
         <form method="post">
-            <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" name="prenom" placeholder="Votre prénom">
+            <div class="mb-3">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" id="prenom" name="prenom" class="form-control" placeholder="Votre prénom" required>
+            </div>
 
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" placeholder="Votre nom">
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" id="nom" name="nom" class="form-control" placeholder="Votre nom" required>
+            </div>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Votre email">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Votre email" required>
+            </div>
 
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="Votre message..."></textarea>
+            <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" name="message" rows="5" class="form-control" placeholder="Votre message..." required></textarea>
+            </div>
 
-            <button type="submit">Envoyer le message</button>
+            <button type="submit" class="btn btn-gradient w-100 py-2">Envoyer le message</button>
         </form>
     </div>
+</div>
+
 </body>
 </html>

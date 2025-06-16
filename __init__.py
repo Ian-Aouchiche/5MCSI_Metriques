@@ -3,6 +3,10 @@ from flask import render_template
 from flask import json
 from datetime import datetime
 from urllib.request import urlopen
+import json
+from urllib.request import urlopen
+from collections import Counter
+
 import sqlite3
                                                                                                                                        
 app = Flask(__name__)                                                                                                                  
@@ -37,3 +41,24 @@ def mongraphique():
 @app.route("/histogramme/")
 def histogramme():
     return render_template("histogramme.html")
+
+@app.route('/commits/')
+def commits():
+    response = urlopen('https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits')
+    raw_content = response.read()
+    json_content = json.loads(raw_content.decode('utf-8'))
+
+    minutes_list = []
+    for commit in json_content:
+        date_str = commit.get('commit', {}).get('author', {}).get('date')
+        date_object = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%SZ')
+        minutes_list.append(date_object.minute)
+
+    counter = Counter(minutes_list)
+    results = [{'minute': minute, 'count': count} for minute, count in sorted(counter.items())]
+
+    return jsonify(results=results)
+
+@app.route("/graph_commits/")
+def graph_commits():
+    return render_template("commits.html")

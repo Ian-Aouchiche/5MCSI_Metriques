@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Histogramme des Commits</title>
+    <title>Commits par minute</title>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
@@ -14,7 +14,7 @@
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-            fetch('/commits/')
+            fetch('/commits/data/')
                 .then(response => response.json())
                 .then(data => {
                     var dataTable = new google.visualization.DataTable();

@@ -44,6 +44,10 @@ def histogramme():
 
 @app.route('/commits/')
 def commits():
+    return render_template("commits.html")
+
+@app.route('/commits/data/')
+def commits_data():
     response = urlopen('https://api.github.com/repos/OpenRSI/5MCSI_Metriques/commits')
     raw_content = response.read()
     json_content = json.loads(raw_content.decode('utf-8'))
@@ -58,7 +62,3 @@ def commits():
     results = [{'minute': minute, 'count': count} for minute, count in sorted(counter.items())]
 
     return jsonify(results=results)
-
-@app.route("/graph_commits/")
-def graph_commits():
-    return render_template("commits.html")

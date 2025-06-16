@@ -1,16 +1,13 @@
-/* Fond full screen avec dégradé */
 .background-gradient {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 }
 
-/* Carte blanche bien arrondie et centrée */
 .form-card {
     border-radius: 20px;
     width: 500px;
     background: #ffffff;
 }
 
-/* Titre avec léger dégradé pro */
 .text-gradient {
     background: linear-gradient(45deg, #007bff, #00c6ff);
     -webkit-background-clip: text;
@@ -18,7 +15,6 @@
     font-weight: 700;
 }
 
-/* Bouton avec dégradé personnalisé */
 .btn-gradient {
     background: linear-gradient(45deg, #4CAF50, #007bff);
     color: white;
